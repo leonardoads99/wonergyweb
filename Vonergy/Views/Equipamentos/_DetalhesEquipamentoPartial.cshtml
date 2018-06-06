@@ -1,0 +1,41 @@
+﻿
+@model vonergyDom.domain.Equipamentos
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/css")
+
+<div class="row">
+    <h3 class="text-center" id="h3">Detalhes do Equipamento</h3>
+    <hr />
+    <div class=" form-group col-md-offset-1">
+        @Html.ActionLink("Voltar", "ListarEquipamento", "Equipamentos", new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+<div class="col-md-4 col-md-offset-4">
+    <div class="panel panel-primary ">
+        <div class="panel-body">
+            <div class="row col-md-offset-2">
+                <p>@Html.DisplayNameFor(model => model.NomeEquipamento) : @Html.DisplayFor(model => model.NomeEquipamento)</p>
+                <p>@Html.DisplayNameFor(model => model.Marca) : @Html.DisplayFor(model => model.Marca)</p>
+                <p>@Html.DisplayNameFor(model => model.Modelo) : @Html.DisplayFor(model => model.Modelo)</p>
+                <p>@Html.DisplayNameFor(model => model.PotenciaMaxima) : @Html.DisplayFor(model => model.PotenciaMaxima)</p>
+                <p>@Html.DisplayNameFor(model => model.PotenciaMinima) : @Html.DisplayFor(model => model.PotenciaMinima)</p>
+                <p>@Html.DisplayNameFor(model => model.TensaoMaxima) : @Html.DisplayFor(model => model.TensaoMaxima)</p>
+                <p>@Html.DisplayNameFor(model => model.TensaoMinima) : @Html.DisplayFor(model => model.TensaoMinima)</p>
+                <p>@Html.DisplayNameFor(model => model.CorrenteMaxima) : @Html.DisplayFor(model => model.CorrenteMaxima)</p>
+                <p>@Html.DisplayNameFor(model => model.CorrentMinima) : @Html.DisplayFor(model => model.CorrentMinima)</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/bootstrap")
+
+
+
+

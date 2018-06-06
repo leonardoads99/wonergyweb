@@ -1,0 +1,121 @@
+﻿@Styles.Render("~/Content/css")
+<div class="container">
+
+    <div class="row linhaConsumo" id="linhaConsumo">
+        <div class="col-md-3 col-md-offset-1">
+            <p>@Html.Label("Consumo", new { @class = "power" })</p>
+            <p class="powernowBlue">@ViewBag.consumo KWh</p>
+        </div>
+
+        <div class="col-md-3 col-md-offset-5">
+            <p>@Html.Label("Custo", new { @class = "power" })</p>
+            <p class="solarPvYellow">R$: @ViewBag.valorReais</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-3 col-md-offset-1 btnbuttons">
+            <button type="button" class="btn btn-primary" id="btnH">H</button>
+            <button type="button" class="btn btn-primary" id="btnD">D</button>
+            <button type="button" class="btn btn-primary" id="btnM">M</button>
+            <button type="button" class="btn btn-primary" id="btnY">Y</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 chart" id="barchart">
+            <canvas id="bar-chart" width="1200" height="450"></canvas>
+        </div>
+        <div class="col-md-10 col-md-offset-1 chart" id="lineChart">
+            <canvas id="line-chart" width="1200" height="450"></canvas>
+        </div>
+        <div class="col-md-10 col-md-offset-1 chart" id="graficoLine">
+            <canvas id="primeiroGrafico" width="1200" height="450"></canvas>
+        </div>
+        <div class="col-md-10 col-md-offset-1 chart" id="barGrouped">
+            <canvas id="bar-chart-grouped" width="1200" height="450"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2 col-md-offset-1 footer ">
+        <p>@Html.Label("House", new { @class = "power" })</p>
+        <p>@Html.Label("23kwh", new { @class = "houseBlue" })</p>
+    </div>
+    <div class="col-md-2 col-md-offset-1 footer">
+        <p>@Html.Label("Solar", new { @class = "power" })</p>
+        <p>@Html.Label("41kwh", new { @class = "solar" })</p>
+    </div>
+    <div class="col-md-2 col-md-offset-1 footer">
+        <p>@Html.Label("Equipamento Ativos", new { @class = "power" })</p>
+        <p>@Html.Label("0", new { @class = "directGreen" })</p>
+    </div>
+    <div class="col-md-2 col-md-offset-1 footer">
+        <p>@Html.Label("Equipamento Inativos", new { @class = "power" })</p>
+        <p>@Html.Label("0", new { @class = "fromGridRed" })</p>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/chart")
+@Scripts.Render("~/bundles/bootstrap")
+@section scripts {
+
+
+
+    <script>
+        //$.ajax({
+        //    type: "GET",
+        //    url: "/Home/AlimentarGraficoMes",
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "json",
+        //    success: function (chData) {
+        //        var aData = chData;
+
+        //        var DataRegistro = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+        //        var damage = [5];
+        //        //var aLabels = aData[1];
+        //        //var aDatasets1 = aData[2];
+        //        //  var aDatasets1 = eval(aData);
+        //        //  console.log(potencia)
+
+        //        for (i = 0; i < aData.rows; i++) {
+
+        //            potencia.push(aData.rows[i].potencia)
+        //            console.log(potencia)
+        //        }
+        //        console.log(aData)
+
+        //        //   console.log(potencia)
+
+        //        var dataT = {
+        //            labels: DataRegistro,
+        //            datasets: [{
+        //                label: "Test Data",
+        //                data: damage,
+        //                fill: true,
+        //                legend: { position: 'top' },
+        //                backgroundColor: ["rgba(54, 162, 235, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
+        //                borderColor: ["rgb(54, 162, 235)", "rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
+        //                borderWidth: 1
+        //            }]
+        //        };
+        //        var ctx = $("#bar-chart").get(0).getContext("2d");
+        //        var myNewChart = new Chart(ctx, {
+        //            type: 'bar',
+        //            data: dataT,
+        //            options: {
+        //                responsive: true,
+        //                title: { display: true, text: 'CHART.JS DEMO CHART' },
+        //                legend: { position: 'top' },
+        //                scales: {
+        //                    //  xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+        //                    // yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 50, beginAtZero: true } }]
+        //                },
+        //            }
+        //        });
+        //    }
+        //});
+    </script>
+
+
+}

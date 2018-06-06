@@ -1,0 +1,82 @@
+﻿
+@model IList<vonergyDom.domain.Empresa>
+@{
+    ViewBag.Title = "ListarEmpresa";
+}
+
+@Styles.Render("~/Content/css")
+
+@if (ViewBag.Message == "Empresa Excluida")
+{
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="fecharBotãoModalCadastro">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">
+                        <div class="alert alert-success" role="alert" id="msg">
+                            @ViewBag.Message
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("ListarEmpresa", "Empresa", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-md-offset-3">
+                <input type="search" class="form-control" placeholder="Buscar" id="inputPesquisa" />
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary" id="btnNovoFuncionario">Buscar Empresa</button>
+            </div>
+        </div>
+        <div id="listEmpresa" class="row">
+            <div class="table-responsive col-md-12">
+                <table class="table table-striped" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Cnpj</th>
+                            <th>Nome Fantasia</th>
+                            <th>Razão Social</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cnpj)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NomeFantasia)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RazaoSocial)
+                            </td>
+                            <td class="actions">
+                                @Html.ActionLink("Visualizar", "Detalhes", "Empresa", new { Id = item.Id }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Editar", "Editar", "Empresa", new { Id = item.Id }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Delete", "Delete", "Empresa", new { Id = item.Id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <div class="modal" id="modal">
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@Scripts.Render("~/bundles/bootstrap")
+
+
+
+

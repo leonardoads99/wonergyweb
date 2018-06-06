@@ -1,0 +1,10 @@
+﻿body {
+}
+
+#inputPesquisaEquipamento, #btnNovoEquipamento {
+    margin-top: 40px;
+}
+
+#listEquipamento {
+    margin-top: 40px;
+}

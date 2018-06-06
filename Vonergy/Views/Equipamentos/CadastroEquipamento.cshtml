@@ -1,0 +1,101 @@
+﻿@model vonergyDom.ViewModel.Equipamentos
+
+@{
+    ViewBag.Title = "CadastroEquipamentos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/css")
+
+<h3 class="text-center" id="h3">Cadastro de Equipamento</h3>
+
+
+@if (ViewBag.Mensagem == "Equipamento Cadastrado com sucesso")
+{
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="fecharBotãoModalCadastro">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">
+                        <div class="alert alert-success" role="alert" id="msg">
+                            @ViewBag.Mensagem
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<hr />
+@using (Html.BeginForm("CadastroEquipamento", "Equipamentos", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="panel panel-primary" id="panelPessoais">
+            <div class="panel-heading">Equipamentos</div>
+            <div class="panel panel-body" id="panelCorpo">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        @Html.EditorFor(model => model.NomeEquipamento, new { htmlAttributes = new { @class = "form-control NomeEquipamento", placeholder = "Nome Equipamento" } })
+                        @Html.ValidationMessageFor(model => model.NomeEquipamento, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { @class = "form-control Marca", placeholder = "Marca" } })
+                        @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control", placeholder = "Modelo" } })
+                        @Html.ValidationMessageFor(model => model.Modelo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.PotenciaMaxima, new { htmlAttributes = new { @class = "form-control Potencia", placeholder = "Potencia Máxima" } })
+                        @Html.ValidationMessageFor(model => model.PotenciaMaxima, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.PotenciaMinima, new { htmlAttributes = new { @class = "form-control Potencia", placeholder = "Potencia Minima" } })
+                        @Html.ValidationMessageFor(model => model.PotenciaMinima, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(c => c.TensaoMaxima, new { htmlAttributes = new { @class = "form-control Tensao", placeholder = "Tensão Máxima" } })
+                        @Html.ValidationMessageFor(model => model.TensaoMaxima, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.TensaoMinima, new { htmlAttributes = new { @class = "form-control Potencia", placeholder = "Tensão Minima" } })
+                        @Html.ValidationMessageFor(model => model.TensaoMinima, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.CorrenteMaxima, new { htmlAttributes = new { @class = "form-control  Corrente", placeholder = "Corrente Máxima" } })
+                        @Html.ValidationMessageFor(model => model.CorrenteMaxima, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.CorrentMinima, new { htmlAttributes = new { @class = "form-control Potencia", placeholder = "Corrente Minima" } })
+                        @Html.ValidationMessageFor(model => model.CorrentMinima, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-9 col-md-9">
+                        <input type="submit" value="Cadastrar" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+
+}

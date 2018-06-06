@@ -1,0 +1,139 @@
+﻿/*body {
+    background: black;
+}*/
+#panelDash, #panelLine, #panelDashBarCharGrouped {
+    margin-top: 50px;
+    border: none;
+}
+#panelDashBody, #panelDashLine, #panelDashBarCharGrouped {
+    background: #E8E8E8;
+    color: steelblue;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.linear-vertical {
+    height: 60px;
+    border-left: 3px solid #32CD32;
+    margin-left: 16px;
+    margin-top: 10px;
+}
+
+.p {
+    margin-top: 60px;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 100px;
+    color: red;
+}
+
+.tagP{
+    margin-left:20px;
+   
+}
+.cifrao {
+    margin-top: 15px;
+    margin-left: 7px;
+    font-size:20px
+}
+.km {
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size:20px;
+    font-weight:bolder;
+   
+}
+
+#labelMensal {
+    margin-top: 100px;
+}
+
+#panelCusto {
+    margin-top: -450px;
+}
+
+.h3{
+    font-weight:bolder;
+    font-size:18px;
+}
+.equip{
+    font-size:20px;
+    font-weight:bolder;
+}
+.acctive, .manuten, .indis{
+    font-size: 18px;
+}
+
+.desc {
+    font-size: 17px;
+}
+
+#price-total {
+    font-size: 20px;
+}
+
+
+.total{
+    font-size:22px;
+}
+#panelEqui {
+    margin-top: -41px;
+}
+
+#panelCustoPrimary, #panelEquiPrimary {
+    background: #008B8B;
+    color: white;
+}
+
+.power{
+    margin-top:75px;
+    color:black;
+}
+
+.powernowBlue{
+    color:blue;
+    font-size:45px;
+    margin-top:-20px;
+
+}
+
+.exportingGreen {
+    color: green;
+    font-size: 30px;
+}
+
+.solarPvYellow {
+    color: green;
+    font-size: 45px;
+    margin-top:-20px;
+}
+
+.fromGridRed{
+    color:red;
+    font-size:30px;
+}
+.houseBlue{
+    color:blue;
+    font-size:30px;
+}
+.solar{
+    color:yellow;
+    font-size:30px;
+}
+.directGreen{
+    color:green;
+    font-size:30px;
+}
+.btnbuttons{
+    margin-top:-20px;
+}
+.chart{
+    margin-top:-20px;
+}
+.footer{
+    margin-top:-50px;
+}
+#checkbox2 {
+    margin-top: -17px;
+    margin-left: -66px;
+}

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript"></script>
+
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <nav class="navbar navbar-inverse nav navbar-fixed-top" id="menu" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                    <span class="sr-only">Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("DashBoard","Home")">Vonergy</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("DashBoard","Home")">Home</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastro<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","Funcionario")">Funcionário</a></li>
+                            <li><a href="@Url.Action("Index","Empresa")">Empresa</a></li>
+                            <li><a href="@Url.Action("Index","Equipamentos")">Equipamento</a></li>
+                            <li><a href="@Url.Action("Index","DispositivoIot")">Dispositivo</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Listar <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("ListarFuncionario","Funcionario")">Funcionário</a></li>
+                            <li><a href="@Url.Action("ListarEmpresa","Empresa")">Empresa</a></li>
+                            <li><a href="@Url.Action("ListarEquipamento","Equipamentos")">Equipamentos</a></li>
+                            <li><a href="@Url.Action("ListarDispositivo","DispositivoIot")">Dispositivo</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Configuração <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","Configuracao")">Parametro</a></li>
+                            @*<li><a href="@Url.Action("ListarEmpresa","Empresa")">Empresa</a></li>
+                                <li><a href="@Url.Action("ListarEquipamento","Equipamentos")">Equipamentos</a></li>
+                                <li><a href="@Url.Action("ListarDispositivo","DispositivoIot")">Dispositivo</a></li>*@
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/inputmask")
+</body>
+</html>

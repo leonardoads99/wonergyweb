@@ -1,0 +1,46 @@
+﻿
+@model vonergyDom.domain.Funcionario
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/css")
+
+<div class="row">
+    <h3 class="text-center" id="h3">Detalhes do Funcionário</h3>
+    <hr />
+    <div class=" form-group col-md-offset-1">
+        @Html.ActionLink("Voltar", "ListarFuncionario", "Funcionario", new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+<div class="col-md-4 col-md-offset-4">
+    <div class="panel panel-primary ">
+        <div class="panel-body">
+            <div class="row col-md-offset-2">
+                <p>@Html.DisplayNameFor(model => model.Nome) : @Html.DisplayFor(model => model.Nome)</p>
+                <p>@Html.DisplayNameFor(model => model.Cpf) : @Html.DisplayFor(model => model.Cpf)</p>
+                <p>@Html.DisplayNameFor(model => model.Rg) : @Html.DisplayFor(model => model.Rg)</p>
+                <p>@Html.DisplayNameFor(model => model.NomeMae) : @Html.DisplayFor(model => model.NomeMae)</p>
+                <p>@Html.DisplayNameFor(model => model.NomePai) : @Html.DisplayFor(model => model.NomePai)</p>
+                <p>@Html.DisplayNameFor(model => model.Sexo) : @Html.DisplayFor(model => model.Sexo)</p>
+                <p>@Html.DisplayNameFor(model => model.OrgaoExpeditor) : @Html.DisplayFor(model => model.OrgaoExpeditor)</p>
+                <p>@Html.DisplayNameFor(model => model.Logradouro) : @Html.DisplayFor(model => model.Logradouro)</p>
+                <p>@Html.DisplayNameFor(model => model.Cidade) : @Html.DisplayFor(model => model.Cidade)</p>
+                <p>@Html.DisplayNameFor(model => model.Bairro) : @Html.DisplayFor(model => model.Bairro)</p>
+                <p>@Html.DisplayNameFor(model => model.Cep) : @Html.DisplayFor(model => model.Cep)</p>
+                <p>@Html.DisplayNameFor(model => model.Uf) : @Html.DisplayFor(model => model.Uf)</p>
+                <p>@Html.DisplayNameFor(model => model.Referencia) : @Html.DisplayFor(model => model.Referencia)</p>
+                <p>@Html.DisplayNameFor(model => model.Telefone) : @Html.DisplayFor(model => model.Telefone)</p>
+                <p>@Html.DisplayNameFor(model => model.Celular) : @Html.DisplayFor(model => model.Celular)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/bootstrap")
+
+
+
+

@@ -1,0 +1,176 @@
+﻿@model Vonergy.ViewModel.Funcionario
+
+@using vonergyDom.ViewModel.Enumm
+
+@{
+    ViewBag.Title = "CadastroFuncionario";
+}
+
+@Styles.Render("~/Content/css")
+
+<h3 class="text-center" id="h3">Cadastro de Funcionário</h3>
+
+<hr />
+@if (ViewBag.Mensagem == "Funcionáro Cadastrado com sucesso")
+{
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="fecharBotãoModalCadastro">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">
+                        <div class="alert alert-success" role="alert" id="msg">
+                            @ViewBag.Mensagem
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="myModalCPF" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" id="fecharBotãoModalCadastro">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">
+                    <div class="alert alert-danger" role="alert" id="msg">
+                        <h5 class="text-center">CPF invalido,Por Favor digite um CPF valido</h5>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("CadastroFuncionario", "Funcionario", FormMethod.Post))
+{
+    <div class="container">
+
+        <div class="panel panel-primary" id="panelPessoais">
+            <div class="panel-heading">Dados Pessoais</div>
+            <div class="panel panel-body" id="panelCorpo">
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control nome", placeholder = "Nome" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control cpf", placeholder = "CPF" } })
+                        @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.Rg, new { htmlAttributes = new { @class = "form-control rg", placeholder = "Rg" } })
+                        @Html.ValidationMessageFor(model => model.Rg, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.DropDownListFor(c => c.OrgaoExpeditor, Enum.GetValues(typeof(OrgaoExpeditor)).Cast<OrgaoExpeditor>().Select(c => new SelectListItem { Text = c.ToString(), Value = c.ToString() }), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.OrgaoExpeditor, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control dataNascimento calendarDataPicke", @type = "date", placeholder = "Data de Nascimento" } })
+                        @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.DropDownListFor(c => c.Sexo, Enum.GetValues(typeof(Sexo)).Cast<Sexo>().Select(c => new SelectListItem { Text = c.ToString(), Value = c.ToString() }), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.DropDownListFor(c => c.EstadoCivil, Enum.GetValues(typeof(EstadoCivil)).Cast<EstadoCivil>().Select(c => new SelectListItem { Text = c.ToString(), Value = c.ToString() }), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        @Html.EditorFor(model => model.NomeMae, new { htmlAttributes = new { @class = "form-control nomeMae", placeholder = "Nome da Mãe" } })
+                        @Html.ValidationMessageFor(model => model.NomeMae, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        @Html.EditorFor(model => model.NomePai, new { htmlAttributes = new { @class = "form-control nomePai", placeholder = "Nome da Pai" } })
+                        @Html.ValidationMessageFor(model => model.NomePai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary" id="panelEndereco">
+            <div class="panel-heading">
+                Endereço
+            </div>
+            <div class="panel panel-body" id="panelCorpoEndereco">
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control cep", placeholder = "Cep" } })
+                        @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-8">
+                        @Html.EditorFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control logradouro", placeholder = "Logradouro" } })
+                        @Html.ValidationMessageFor(model => model.Logradouro, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Numero" } })
+                        @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control bairro", placeholder = "Bairro" } })
+                        @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control cidade", placeholder = "Cidade" } })
+                        @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.Uf, new { htmlAttributes = new { @class = "form-control uf", placeholder = "Estado" } })
+                        @Html.ValidationMessageFor(model => model.Uf, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        @Html.EditorFor(model => model.Referencia, new { htmlAttributes = new { @class = "form-control complemento", placeholder = "Complemento" } })
+                        @Html.ValidationMessageFor(model => model.Referencia, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary" id="panelContato">
+            <div class="panel-heading">
+                Contato
+            </div>
+            <div class="panel panel-body" id="panelCorpoContato">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "E-mail" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control telefone", placeholder = "Telefone" } })
+                        @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control celular", placeholder = "Celular" } })
+                        @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row col-md-10 col-md-offset-10">
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+    </div>
+}
+
+@Scripts.Render("~/bundles/bootstrap")
+
+

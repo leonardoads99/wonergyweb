@@ -1,0 +1,136 @@
+﻿
+@model vonergyDom.domain.Funcionario
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/css")
+
+<div class="row">
+    <h3 class="text-center" id="h3">Atualizar Funcionário</h3>
+    <hr />
+    <div class=" form-group col-md-offset-1">
+        @Html.ActionLink("Voltar", "ListarFuncionario", "Funcionario", new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+@using (Html.BeginForm("AtualizarFuncionario", "Funcionario", FormMethod.Post))
+{
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-primary ">
+            <div class="panel-body">
+                <div class="row col-md-offset-2">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Id)
+                            </div>
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Nome, new { htmlAttributes = new { @class = "form-control", placeholder = "Nome" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Cpf, new { htmlAttributes = new { @class = "form-control", placeholder = "Cpf" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Rg, new { htmlAttributes = new { @class = "form-control", placeholder = "Rg" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.NomeMae, new { htmlAttributes = new { @class = "form-control", placeholder = "NomeMae" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.NomePai, new { htmlAttributes = new { @class = "form-control", placeholder = "NomePai" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Sexo, new { htmlAttributes = new { @class = "form-control", placeholder = "Sexo" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.OrgaoExpeditor, new { htmlAttributes = new { @class = "form-control", placeholder = "OrgaoExpeditor" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Cep, new { htmlAttributes = new { @class = "form-control", placeholder = "Cep" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Logradouro, new { htmlAttributes = new { @class = "form-control", placeholder = "Logradouro" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Cidade, new { htmlAttributes = new { @class = "form-control", placeholder = "Cidade" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Bairro, new { htmlAttributes = new { @class = "form-control", placeholder = "Bairro" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Uf, new { htmlAttributes = new { @class = "form-control", placeholder = "Uf" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Numero, new { htmlAttributes = new { @class = "form-control", placeholder = "Numero" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Referencia, new { htmlAttributes = new { @class = "form-control", placeholder = "Referencia" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Telefone, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefone" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Celular, new { htmlAttributes = new { @class = "form-control", placeholder = "Celular" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.EstadoCivil, new { htmlAttributes = new { @class = "form-control", placeholder = "Estado Civil" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-offset-8">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@Scripts.Render("~/bundles/bootstrap")
+
+
+
+
+

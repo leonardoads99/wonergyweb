@@ -1,0 +1,72 @@
+﻿
+
+@model vonergyDom.domain.DispositivoIOT
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/css")
+
+<div class="row">
+    <h3 class="text-center" id="h3">Atualizar Dispositivo</h3>
+    <hr />
+    <div class=" form-group col-md-offset-1">
+        @Html.ActionLink("Voltar", "ListarDispositivo", "DispositivoIot", new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+@using (Html.BeginForm("AtualizarEquipamento", "DispositivoIot", FormMethod.Post))
+{
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-primary ">
+            <div class="panel-body">
+                <div class="row col-md-offset-2">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Id)
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(modelItem => modelItem.CodigoEsp, new { htmlAttributes = new { @class = "form-control", placeholder = "Serial Dispositivo" } })
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Nome, new { htmlAttributes = new { @class = "form-control", placeholder = "Nome Dispositivo" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Modelo, new { htmlAttributes = new { @class = "form-control", placeholder = "Modelo" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Status, new { htmlAttributes = new { @class = "form-control", placeholder = "Status" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelItem => modelItem.Descicao, new { htmlAttributes = new { @class = "form-control", placeholder = " Descrição" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-offset-8">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@Scripts.Render("~/bundles/bootstrap")
+
+
+
+
+

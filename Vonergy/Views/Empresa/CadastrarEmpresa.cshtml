@@ -1,0 +1,162 @@
+﻿
+@model Vonergy.ViewModel.Empresa
+
+@{
+    ViewBag.Title = "CadastroEmpresa";
+}
+
+@Styles.Render("~/Content/css")
+
+<h3 class="text-center" id="h3">Cadastro de Empresa</h3>
+<hr />
+@if (ViewBag.Mensagem == "Empresa Cadastrada com sucesso")
+{
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="fecharBotãoModalCadastro">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">
+                        <div class="alert alert-success" role="alert" id="msg">
+                            @ViewBag.Mensagem
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="myModalCNPJ" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" id="fecharBotãoModalCadastro">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">
+                    <div class="alert alert-danger" role="alert" id="msg">
+                        <h5 class="text-center">CNPJ invalido, Por Favor digite um CNPJ valido</h5>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("CadastrarEmpresa", "Empresa", FormMethod.Post))
+{
+
+    <div class="container">
+        <div class="panel panel-primary" id="panelPessoais">
+            <div class="panel-heading">Dados Pessoais</div>
+            <div class="panel panel-body" id="panelCorpo">
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        @Html.EditorFor(model => model.RazaoSocial, new { htmlAttributes = new { @class = "form-control razaoSocial", placeholder = "Razão Social" } })
+                        @Html.ValidationMessageFor(model => model.RazaoSocial, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.NomeFantasia, new { htmlAttributes = new { @class = "form-control nomeFantasia", placeholder = "Nome Fantasia" } })
+                        @Html.ValidationMessageFor(model => model.NomeFantasia, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.Cnpj, new { htmlAttributes = new { @class = "form-control cnpj", placeholder = "Cnpj" } })
+                        @Html.ValidationMessageFor(model => model.Cnpj, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div>
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(model => model.Ativo, "1")
+                                Ativo
+                            </label>
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(model => model.Ativo, "0")
+                                Inativo
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary" id="panelEndereco">
+            <div class="panel-heading">
+                Endereço
+            </div>
+            <div class="panel panel-body" id="panelCorpoEndereco">
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control cep", placeholder = "Cep" } })
+                        @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-8">
+                        @Html.EditorFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control logradouro", placeholder = "Logradouro" } })
+                        @Html.ValidationMessageFor(model => model.Logradouro, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control numero", placeholder = "Numero" } })
+                        @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control bairro", placeholder = "Bairro" } })
+                        @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control cidade", placeholder = "Cidade" } })
+                        @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.EditorFor(model => model.Uf, new { htmlAttributes = new { @class = "form-control uf", placeholder = "Estado" } })
+                        @Html.ValidationMessageFor(model => model.Uf, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        @Html.EditorFor(model => model.Referencia, new { htmlAttributes = new { @class = "form-control Referencia", placeholder = "Referencia" } })
+                        @Html.ValidationMessageFor(model => model.Referencia, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary" id="panelContato">
+            <div class="panel-heading">
+                Contato
+            </div>
+            <div class="panel panel-body" id="panelCorpoContato">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control email", placeholder = "E-mail" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control telefone", placeholder = "Telefone" } })
+                        @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control celular", placeholder = "Celular" } })
+                        @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.EditorFor(model => model.Site, new { htmlAttributes = new { @class = "form-control site", placeholder = "Site" } })
+                    @Html.ValidationMessageFor(model => model.Site, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-offset-10">
+            <button type="submit" class="btn btn-success">Cadastrar</button>
+        </div>
+    </div>
+}
+@Scripts.Render("~/bundles/bootstrap")

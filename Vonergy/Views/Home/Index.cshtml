@@ -1,0 +1,166 @@
+﻿@model Vonergy.ViewModel.Funcionario
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+
+    @using (Html.BeginForm("Acessar", "Home", FormMethod.Post))
+    {
+        @Html.ValidationSummary()
+
+        <div class="col-md-4 col-md-offset-4">
+            <img class="img-responsive imagem" src="~/Image/Logo.png" alt="" />
+            <div class="panel panel-primary ">
+                <div class="panel-heading ic">
+                    <h4 class="modal-title"> <i class="fa fa-user fa-lg"></i> Acesse o Vonergy</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row col-md-offset-2">
+                        <div class="form-group col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "E-mail" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-10">
+                            @Html.PasswordFor(Model => Model.Senha, new { @class = "form-control", placeholder = "Password" })
+                            @Html.ValidationMessageFor(Model => Model.Senha, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-9">
+                                <button type="submit" class="btn btn-success pull-right">Acessar</button>
+                                <div class="row col-md-offset-1">
+                                    <a href="#" data-toggle="modal" data-target="#modalRecuperarSenha"><i class="fa fa-user-secret"></i>Recuperar Senha</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @*-----------------------------------------------------------MODAIS-------------------------------------------------------*@
+
+    @* Modal de Recuperação de senha. *@
+    <div class="modal fade" id="modalRecuperarSenha" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="fecharBotãoModalEmail">&times;</button>
+                    <h4 class="modal-title text-center">Recuperar Senha</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class=" col-md-12">
+                            <input type="email" class="form-control" placeholder="E-mail">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success">Solicitar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*  Modal para troca de senha.  *@
+    @if (ViewBag.message == "Senha Igual")
+    {
+        <div class="modal fade" id="modalTrocarSenha" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-center">Alteração de Senha</h4>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="form-group  col-md-6">
+                            <input type="text" class="form-control" placeholder="Nova Senha">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" placeholder="Confirme sua senha">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @*  Modal para troca de senha.  *@
+    @if (ViewBag.message == "Senha ou Login Invalido")
+    {
+        <div id="informacaoSenha" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" id="fecharBotãoModalCadastro">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center">
+                            <div class="alert alert-danger" role="alert" id="msg">
+                                @ViewBag.message
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @*  Modal que rrtorna uma mensagem de confirmação na alteração de senha  *@
+    @if (ViewBag.Mensagem == "Senha Alterada Com Sucesso")
+    {
+        <div id="ModalAlterarSenha" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" id="fecharBotãoModalEmail">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center">
+                            <div class="alert alert-success" role="alert" id="msg">
+                                @ViewBag.Mensagem
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (ViewBag.message == "Campos Cpf e Senha são  Obrigatorios")
+    {
+        <div id="informacaoSenha" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" id="fecharBotãoModalCadastro">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center">
+                            <div class="alert alert-danger" role="alert" id="msg">
+                                @ViewBag.message
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/inputmask")
+
+</body>
+</html>
